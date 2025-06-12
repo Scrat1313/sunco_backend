@@ -8,6 +8,12 @@ import { join } from 'path';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
+  // Active CORS pour l'origine spécifiée
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    credentials: true,
+  });
+
   // Swagger
   const config = new DocumentBuilder()
     .setTitle('Backend API Sun CO.')
